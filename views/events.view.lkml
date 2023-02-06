@@ -27,6 +27,12 @@ view: events {
     sql: ${TABLE}.type_id ;;
   }
 
+  dimension: type_ide {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.type_id ;;
+  }
+
   dimension: user_id {
     type: number
     # hidden: yes

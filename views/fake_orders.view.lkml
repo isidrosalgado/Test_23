@@ -16,6 +16,10 @@ view: fakeorders {
     type: number
     sql: ${TABLE}.order_price ;;
   }
+  measure: countless {
+    type: number
+    sql: ${count}-100 ;;
+  }
 
   measure: count {
     type: count

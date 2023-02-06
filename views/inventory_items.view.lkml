@@ -49,6 +49,38 @@ view: inventory_items {
 
   measure: count {
     type: count
-    drill_fields: [id, products.id, products.item_name, order_items.count, order_items_vijaya.count]
+    drill_fields: [id, products.id, products.item_name, order_items.count]
   }
+
+  measure: total_cost {
+    type: sum
+    sql: ${TABLE}.cost ;;
+  }
+
+  measure: cost_by_100_liquid {
+    type: number
+    sql: ${TABLE}.cost ;;
+    html: {{ rendered_value | times: 100 | round: 2 | append: "%"}} ;;
+  }
+
+  measure: cost_by_100_format {
+    type: number
+    sql: ${TABLE}.cost ;;
+    value_format: "0.00"
+    html: {{ rendered_value | append: "%" }} ;;
+  }
+
+  # measure: test_using_a_measure {
+  #   type: number
+  #   sql: ${inventory_items.total_cost} / ${order_items.count};;
+  # }
+
+  # measure: avg_test {
+  #   type: average
+  #   sql: ${cost} ;;
+  #   filters: {
+  #     field: order_items.order_id
+  #     value:"100"
+  #   }
+  # }
 }

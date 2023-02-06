@@ -6,6 +6,11 @@ view: flights {
     sql: ${TABLE}.arr_delay ;;
   }
 
+  # dimension: end_date {
+  #   type: date
+  #   sql: {% date_end orders.day %} ;;
+  # }
+
   dimension_group: arr {
     type: time
     timeframes: [

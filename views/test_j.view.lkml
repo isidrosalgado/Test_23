@@ -1,4 +1,4 @@
-view: order_items {
+view: test_j {
   sql_table_name: demo_db.order_items ;;
   drill_fields: [id]
 
@@ -6,6 +6,17 @@ view: order_items {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+  }
+
+
+  filter: f_filter {
+    type: date
+    sql:
+    CASE
+    WHEN  {% date_start f_filter%}  is not null AND {% date_end f_filter%} is not null
+    THEN (${TABLE}.returned_at >= {% date_start f_filter%} AND ${TABLE}.returned_at < {% date_end f_filter%})
+    ELSE (${TABLE}.returned_at >= {% date_start f_filter%} OR ${TABLE}.returned_at < {% date_end f_filter%})
+    END;;
   }
 
   dimension: inventory_item_id {
@@ -52,13 +63,6 @@ view: order_items {
   measure:sumMoney  {
     type: sum
     sql: ${sale_price} ;;
-    value_format_name: usd
-
-  }
-
-  measure:sumMoney_12M  {
-    type: sum
-    sql: Select ${sale_price} where ${returned_year} < 2015;;
     value_format_name: usd
 
   }

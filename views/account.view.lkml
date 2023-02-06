@@ -27,6 +27,8 @@ view: account {
     sql: ${TABLE}.created ;;
   }
 
+  #comentario de testeo
+
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
@@ -34,6 +36,6 @@ view: account {
 
   measure: count {
     type: count
-    drill_fields: [id, name]
+    #drill_fields: [account*]
   }
 }
