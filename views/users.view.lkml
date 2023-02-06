@@ -72,6 +72,7 @@ view: users {
   }
 
 
+
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
