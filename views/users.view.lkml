@@ -251,7 +251,7 @@ view: users {
   }
   dimension: date_formatted_number {
     type: number
-    sql: date_format((${TABLE}.created_at),'%Y%m%d');;
+    sql: date_format((${TABLE}.created_at),'%b%d%y');;
   }
 
   dimension: max_date_ {
