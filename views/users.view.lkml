@@ -222,7 +222,7 @@ view: users {
 
   dimension: date_formatted_3 {
     type: string
-    sql: date_format((${TABLE}.created_at),' %b %e, %Y');;
+    sql: date_format((${TABLE}.created_at),' %b %d, %Y');;
 
   }
 
@@ -251,7 +251,7 @@ view: users {
   }
   dimension: date_formatted_number {
     type: number
-    sql: date_format((${TABLE}.created_at),'%b%d%y');;
+    sql: date_format((${TABLE}.created_at),'%Y%m%d');;
   }
 
   dimension: max_date_ {
