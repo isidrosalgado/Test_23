@@ -40,7 +40,7 @@ view: users {
   }
 
   dimension: ejemplo_date_format {
-    sql: '2022-01-01' ;;
+    sql: '2022-01-01 14:39' ;;
     html: {{rendered_value | date: "%b %d, %Y"}} ;;
   }
 
