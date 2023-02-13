@@ -1,5 +1,5 @@
 project_name: "test_isidro"
-new_lookml_runtime: no
+new_lookml_runtime: yes
 
 # # Use local_dependency: To enable referencing of another project
 # # on this instance with include: statements
