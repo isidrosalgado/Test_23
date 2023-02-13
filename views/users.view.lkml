@@ -39,13 +39,11 @@ view: users {
     sql: ${TABLE}.created_at ;;
   }
 
-  dimension: ejemplo {
-    type: date
-    datatype: date
-    convert_tz: no
-    sql: ${TABLE}.returned_at ;;
-    html: {{rendered_value | date: "%m/%d/%Y"}} ;;
+  dimension: ejemplo_date_format {
+    sql: 'thereisadate2022-01-01somewhereinthisstring' ;;
+    html: {{rendered_value | date: "%b %d, %Y"}} ;;
   }
+
 
   dimension: audit_formatted {
     group_label: "DATE_MODIFIED"
