@@ -40,7 +40,7 @@ view: users {
   }
 
   dimension: ejemplo_date_format {
-    sql: 'thereisadate2022-01-01somewhereinthisstring' ;;
+    sql: '2022-01-01' ;;
     html: {{rendered_value | date: "%b %d, %Y"}} ;;
   }
 
