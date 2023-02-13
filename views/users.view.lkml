@@ -39,6 +39,14 @@ view: users {
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension: ejemplo {
+    type: date
+    datatype: date
+    convert_tz: no
+    sql: ${TABLE}.returned_at ;;
+    html: {{rendered_value | date: "%b %d, %y"}} ;;
+  }
+
   dimension: audit_formatted {
     group_label: "DATE_MODIFIED"
     label: "DATE_MODIFIED"
