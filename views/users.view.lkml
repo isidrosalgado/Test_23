@@ -44,7 +44,7 @@ view: users {
     datatype: date
     convert_tz: no
     sql: ${TABLE}.returned_at ;;
-    html: {{rendered_value | date: "%b %d, %y"}} ;;
+    html: {{rendered_value | date: "%m/%d/%Y"}} ;;
   }
 
   dimension: audit_formatted {
