@@ -26,6 +26,7 @@ view: users {
   }
 
   dimension_group: created {
+    convert_tz: yes
     type: time
     timeframes: [
       raw,
