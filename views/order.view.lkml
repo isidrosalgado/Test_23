@@ -1,4 +1,4 @@
-view: my_view {
+view: order {
 
 # The original dimension group
   dimension_group: created {
