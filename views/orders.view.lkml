@@ -31,17 +31,6 @@ view: orders {
     ]
     sql: ${TABLE}.created_at ;;
   }
-
-  measure: sales{
-    type: sum
-    sql: ${TABLE}.created_at ;;
-  }
-
-
-
-
-
-
   #test
 
   dimension: max_create_date {
