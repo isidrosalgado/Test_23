@@ -15,47 +15,7 @@ persist_with: test_isidro_default_datagroup
 #<<<<<<< HEAD
 
 
-# Repro ticket 544848 Explore
-explore: dt_orders_order_items {
-  join: inventory_items {
-    type: left_outer
-    sql_on: ${dt_orders_order_items.inventory_item_id} = ${inventory_items.id} ;;
-    relationship: many_to_one
-  }
 
-  aggregate_table: by_date {
-    query: {
-      dimensions: [created_date, order_id, returned_date]
-      timezone: "America/Los_Angeles"
-    }
-
-    materialization: {
-      persist_for: "90 minutes"
-    }
-  }
-
-  aggregate_table: by_month {
-    query: {
-      dimensions: [created_month, order_id, returned_month]
-      timezone: "America/Los_Angeles"
-    }
-
-    materialization: {
-      persist_for: "90 minutes"
-    }
-  }
-
-  aggregate_table: by_year {
-    query: {
-      dimensions: [created_year, inventory_items.id, order_id, returned_year]
-      timezone: "America/Los_Angeles"
-    }
-
-    materialization: {
-      persist_for: "90 minutes"
-    }
-  }
-}
 
 explore: dt_orders{}
 #=======
