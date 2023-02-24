@@ -19,34 +19,27 @@ view: orders {
   }
 
 
-
   ##Test----
-
-# The original dimension group
-  dimension_group: created {
-    hidden: yes
+  dimension_group: current_date {
     type: time
-    timeframes: [date,week,month]
+    timeframes: [
+      raw,
+      date,
+      hour,
+      minute,
+      second
+    ]
     sql: ${TABLE}.created_at ;;
   }
-# The customized timeframes, organized in the Explore field picker under the group label Created
-  dimension: date_formatted {
-    group_label: "Created" label: "Date"
-    sql: ${created_date} ;;
-    html: {{ rendered_value | date: "%b %d, %y" }};;
+
+  measure: sales{
+    type: sum
+    sql: ${TABLE}.sales ;;
   }
 
-  dimension: month_formatted {
-    group_label: "Created" label: "Month"
-    sql: ${created_date} ;;
-    html: {{ rendered_value | date: "%B %Y" }};;
-  }
+  dimension: current_date{}
 
-  dimension: week_formatted {
-    group_label: "Created" label: "Week"
-    sql: ${created_date} ;;
-    html: {{ rendered_value | date: "Week %U (%b %d)" }};;
-  }
+
 
 
   #test
@@ -75,6 +68,9 @@ view: orders {
     html: {{ rendered_value }} | {{Orders_sum._rendered_value }} of total  ;;
     #drill_fields: [orders*]
   }
+
+
+
 
   measure: Orders_sum {
     type: sum
