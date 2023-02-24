@@ -57,8 +57,24 @@ view: orders {
     html: {{ rendered_value }} | {{Orders_sum._rendered_value }} of total  ;;
     #drill_fields: [orders*]
   }
-
-
+#test Alankrita
+  dimension_group: service_datetime {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      week_of_year,
+      quarter,
+      year
+    ]
+    datatype: timestamp
+    sql: CAST(${TABLE}."created_at" AS TIMESTAMP_NTZ) ;;
+  }
+  #test Alankrita
 
 
   measure: Orders_sum {
