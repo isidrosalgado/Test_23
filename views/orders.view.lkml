@@ -34,7 +34,7 @@ view: orders {
 
   measure: sales{
     type: sum
-    sql: ${TABLE}.sales ;;
+    sql: ${TABLE}.created_at ;;
   }
 
   dimension: orders{}
