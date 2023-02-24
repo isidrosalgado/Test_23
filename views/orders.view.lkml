@@ -20,7 +20,7 @@ view: orders {
 
 
   ##Test----
-  dimension_group: orders {
+  dimension_group: orderss{
     type: time
     timeframes: [
       raw,
