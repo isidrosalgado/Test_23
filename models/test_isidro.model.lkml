@@ -57,51 +57,14 @@ explore: events {
   }
 }
 
-explore: fakeorders {
-  join: orders {
-    type: left_outer
-    sql_on: ${fakeorders.order_id} = ${orders.id} ;;
-    relationship: many_to_one
-  }
 
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: flights {}
 
 explore: human {}
 
-explore: hundred_million_orders {
-  join: orders {
-    type: left_outer
-    sql_on: ${hundred_million_orders.order_id} = ${orders.id} ;;
-    relationship: many_to_one
-  }
 
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
 
-explore: hundred_million_orders_wide {
-  join: orders {
-    type: left_outer
-    sql_on: ${hundred_million_orders_wide.order_id} = ${orders.id} ;;
-    relationship: many_to_one
-  }
-
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: incremental_pdts_test {}
 
@@ -198,19 +161,6 @@ explore: schema_migrations {}
 
 
 
-explore: ten_million_orders {
-  join: orders {
-    type: left_outer
-    sql_on: ${ten_million_orders.order_id} = ${orders.id} ;;
-    relationship: many_to_one
-  }
-
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: test {}
 

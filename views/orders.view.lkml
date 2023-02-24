@@ -18,24 +18,17 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
-  dimension_group: created {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.created_at ;;
-  }
+
 
   ##Test----
 
 # The original dimension group
-
+  dimension_group: created {
+    hidden: yes
+    type: time
+    timeframes: [date,week,month]
+    sql: ${TABLE}.created_at ;;
+  }
 # The customized timeframes, organized in the Explore field picker under the group label Created
   dimension: date_formatted {
     group_label: "Created" label: "Date"
@@ -55,15 +48,15 @@ view: orders {
     html: {{ rendered_value | date: "Week %U (%b %d)" }};;
   }
 
+
+  #test
+
   dimension: max_create_date {
     type: string
     sql: (SELECT MAX(created_at) FROM  demo_db.orders) ;;
   }
 
-  dimension: is_max_close_date {
-    type: yesno
-    sql: ${created_raw} = ${max_create_date};;
-  }
+
 
 
   dimension: status {
@@ -204,21 +197,7 @@ view: orders {
     type: date
   }
 
-  measure: orders_selected_month {
-    type: count_distinct
-    sql:
-      case
-        when {% condition date_filter %} ${created_raw} {% endcondition %} then ${id}
-      end ;;
-  }
 
-  measure: orders_selected_month_ly {
-    type: count_distinct
-    sql:
-      case
-        when {% condition date_filter %} DATE_ADD(${created_raw}, INTERVAL -1 Year) {% endcondition %} then ${id}
-      end ;;
-  }
 
 
 }
