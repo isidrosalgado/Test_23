@@ -20,7 +20,7 @@ view: orders {
 
 
   ##Test----
-  dimension_group: current_date {
+  dimension_group: orders {
     type: time
     timeframes: [
       raw,
@@ -37,7 +37,7 @@ view: orders {
     sql: ${TABLE}.sales ;;
   }
 
-  dimension: current_date{}
+  dimension: orders{}
 
 
 
