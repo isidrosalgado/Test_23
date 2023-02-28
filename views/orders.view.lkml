@@ -14,6 +14,7 @@ view: orders {
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -32,6 +33,17 @@ view: orders {
     sql: DAY(${TABLE}.created_at);;
     group_label: "Date Date"
     group_item_label: "Week Test"
+  }
+
+  dimension: month_test {
+    sql: MONTH_NAME(${TABLE}.created_at);;
+    group_label: "Date Date"
+    group_item_label: "Week Test"
+  }
+
+  dimension: month_string {
+    type: string
+    sql: CONCAT(CAST(${month_test} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(${day_test},DECIMAL)+6)/7) AS CHAR)) ;;
   }
 
   dimension: week_string {
