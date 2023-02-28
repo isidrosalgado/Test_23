@@ -36,7 +36,7 @@ view: orders {
   }
 
   dimension: month_test {
-    sql: month_name(${TABLE}.created_at);;
+    sql: month(${TABLE}.created_at);;
     group_label: "Date Date"
     group_item_label: "Week Test"
   }
