@@ -1,61 +1,6 @@
 view: order {
 
 
-    dimension_group: service_datetime {
-      type: time
-      timeframes: [
-        raw,
-        time,
-        date,
-        week,
-        month,
-        month_name,
-        week_of_year,
-        quarter,
-        year
-      ]
-      datatype: timestamp
-      sql: CAST(${TABLE}."order_datetime" AS TIMESTAMP_NTZ) ;;
-    }
-    dimension: week_of_month {
-      type: string
-      sql: CONCAT(
-              CAST(${service_datetime_month_name} AS VARCHAR),
-              ' || ',
-              'Wk-',
-              CAST(Round((day(${TABLE}."order_datetime")+6)/7,0) AS VARCHAR)
-            ) ;;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -87,8 +32,51 @@ view: order {
      type: sum
      sql: ${lifetime_orders} ;;
    }
+
+
+
+
+#testssssssssssssssssssssssssssssssssssssssssssssss
+
+dimension_group: service_datetime {
+  type: time
+  timeframes: [
+    raw,
+    time,
+    date,
+    week,
+    month,
+    month_name,
+    week_of_year,
+    quarter,
+    year
+  ]
+  datatype: timestamp
+  sql: CAST(${TABLE}."order_datetime" AS TIMESTAMP_NTZ) ;;
+}
+dimension: week_of_month {
+  type: string
+  sql: CONCAT(
+              CAST(${service_datetime_month_name} AS VARCHAR),
+              ' || ',
+              'Wk-',
+              CAST(Round((day(${TABLE}."order_datetime")+6)/7,0) AS VARCHAR)
+            ) ;;
 }
 
+
+
+
+
+
+
+
+}
+
+
+
+
+#testsssssssssssssssssssssssssssssssssssssssssssssssssssssss
 # view: order {
 #   # Or, you could make this view a derived table, like this:
 #   derived_table: {
