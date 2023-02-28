@@ -7,30 +7,13 @@ view: orders {
 
 #testssssssssssssssssssssssssssssssssssssssssssssss
 
-  dimension_group: service_datetime {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      month_name,
-      week_of_year,
-      quarter,
-      year
-    ]
-    datatype: timestamp
-    sql: CAST(${TABLE}."order_datetime" AS TIMESTAMP_NTZ) ;;
-  }
-  dimension: week_of_month {
+  dimension: month_week {
     type: string
     sql: CONCAT(
-              CAST(${service_datetime_month_name} AS VARCHAR),
-              ' || ',
-              'Wk-',
-              CAST(Round((day(${TABLE}."order_datetime")+6)/7,0) AS VARCHAR)
-            ) ;;
+          UPPER(LEFT(${TABLE}."date", 3)),
+          ' || wk-',
+          CAST(DATE_PART('week', ${TABLE}."date") AS VARCHAR)
+        ) ;;
   }
 
 
