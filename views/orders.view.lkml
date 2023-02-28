@@ -7,13 +7,36 @@ view: orders {
 
 #testssssssssssssssssssssssssssssssssssssssssssssss
 
-  dimension: month_week {
-    type: date
-    sql: CONCAT(
-          UPPER(LEFT(${TABLE}."date", 3)),
-          ' || wk-',
-          CAST(DATE_PART('week', ${TABLE}."date") AS VARCHAR)
-        ) ;;
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.date ;;
+  }
+
+  dimension: week_test {
+    sql: WEEK(${TABLE}.date);;
+    group_label: "Date Date"
+    group_item_label: "Week Test"
+  }
+  dimension: day_test {
+    hidden: yes
+    sql: DAY(${TABLE}.date);;
+    group_label: "Date Date"
+    group_item_label: "Week Test"
+  }
+
+  dimension: week_string {
+    type: string
+    sql: CONCAT(CAST(${week_test} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(${day_test},DECIMAL)+6)/7) AS CHAR)) ;;
   }
 
 
