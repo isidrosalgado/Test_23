@@ -8,7 +8,7 @@ view: orders {
 #testssssssssssssssssssssssssssssssssssssssssssssss
 
   dimension: month_week {
-    type: string
+    type: date
     sql: CONCAT(
           UPPER(LEFT(${TABLE}."date", 3)),
           ' || wk-',
