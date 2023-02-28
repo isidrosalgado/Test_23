@@ -2,6 +2,51 @@ view: orders {
   sql_table_name: demo_db.orders ;;
   drill_fields: [id]
 
+
+
+
+#testssssssssssssssssssssssssssssssssssssssssssssss
+
+  dimension_group: service_datetime {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      month_name,
+      week_of_year,
+      quarter,
+      year
+    ]
+    datatype: timestamp
+    sql: CAST(${TABLE}."order_datetime" AS TIMESTAMP_NTZ) ;;
+  }
+  dimension: week_of_month {
+    type: string
+    sql: CONCAT(
+              CAST(${service_datetime_month_name} AS VARCHAR),
+              ' || ',
+              'Wk-',
+              CAST(Round((day(${TABLE}."order_datetime")+6)/7,0) AS VARCHAR)
+            ) ;;
+  }
+
+
+
+
+
+
+
+#testsssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
+
+
+
+
+
+
   parameter: date_start {
     type: date
     description: "Use this field to select a date to filter results by."
@@ -57,24 +102,7 @@ view: orders {
     html: {{ rendered_value }} | {{Orders_sum._rendered_value }} of total  ;;
     #drill_fields: [orders*]
   }
-#test Alankrita
-  dimension_group: service_datetime {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      month_name,
-      week_of_year,
-      quarter,
-      year
-    ]
-    datatype: timestamp
-    sql: CAST(${TABLE}."created_at" AS TIMESTAMP_NTZ) ;;
-  }
-  #test Alankrita
+
 
 
   measure: Orders_sum {
@@ -82,7 +110,7 @@ view: orders {
     sql: ${user_id} ;;
   }
 
-  ##### Agustin Test
+
 
   measure: stat_drill {
     type: string
