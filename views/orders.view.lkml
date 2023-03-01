@@ -37,7 +37,7 @@ view: orders {
 
   dimension: test {
     type: string
-    sql: CONCAT(CAST(${date_month_name} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.date),DECIMAL)+6)/7) AS CHAR)) ;;
+    sql: CONCAT(CAST(${date_month_name} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
   }
 
 
