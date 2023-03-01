@@ -35,18 +35,11 @@ view: orders {
     group_item_label: "Week Test"
   }
 
-  dimension: month_test {
-    sql: month(${TABLE}.created_at);;
-    group_label: "Date Date"
-    group_item_label: "Week Test"
-  }
 
-  dimension: month_string {
-    type: string
-    sql: CONCAT(CAST(${month_test} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(${day_test},DECIMAL)+6)/7) AS CHAR)) ;;
-  }
 
-  dimension: week_string {
+
+
+  dimension: test {
     type: string
     sql: CONCAT(CAST(${week_test} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(${day_test},DECIMAL)+6)/7) AS CHAR)) ;;
   }
