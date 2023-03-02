@@ -5,7 +5,7 @@ view: orders {
 
 
 
-#testssssssssssssssssssssssssssssssssssssssssssssss
+#testsssssssssssssssssssssconcat
 
   dimension_group: date {
     type: time
@@ -40,20 +40,20 @@ view: orders {
     sql: CONCAT(CAST(${date_month_name} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
   }
 
+#testssssssssssssssssconcat
+
+#testssssssssssssssssliquid
+
+  dimension: prior_month_date {
+    type: date
+    sql: DATE_TRUNC('month', DATE_ADD(CURRENT_DATE(), INTERVAL -1 MONTH));;
+  }
 
 
 
 
 
-
-#testsssssssssssssssssssssssssssssssssssssssssssssssssssssss
-
-
-
-
-
-
-
+#testssssssssssssssssssliquid
   parameter: date_start {
     type: date
     description: "Use this field to select a date to filter results by."
