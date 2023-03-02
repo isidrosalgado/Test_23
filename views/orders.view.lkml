@@ -23,11 +23,11 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
-  #dimension: week_test {
-  #  sql: WEEK(${TABLE}.created_at);;
-   # group_label: "Date Date"
-    #group_item_label: "Week Test"
-  #}
+  dimension: week_test {
+    sql: WEEK(${TABLE}.created_at);;
+   group_label: "Date Date"
+  group_item_label: "Week Test"
+  }
   dimension: day_test {
     hidden: yes
     sql: DAY(${TABLE}.created_at);;
@@ -69,6 +69,40 @@ dimension: test_date {
 }
 #testsssssssssssssssssssZianWang
 
+#---------------------------concatenaciones-----------------------
+  #dimension: week_test {
+   # sql: WEEK(${TABLE}.date);;
+   # group_label: "Date Date"
+    #group_item_label: "Week Test"
+  #}
+  #dimension: day_test {
+  #  hidden: yes
+   # sql: DAY(${TABLE}.date);;
+  #  group_label: "Date Date"
+   # group_item_label: "Week Test"
+  #}
+
+  #dimension: month_name_test {
+  #  hidden: yes
+  #  sql: MONTHNAME(${TABLE}.date);;
+  #  group_label: "Date Date"
+   # group_item_label: "Month Name Test"
+  #}
+
+
+  #dimension: week_string {
+   # type: string
+    #sql: CONCAT(CAST(${week_test} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(${day_test},DECIMAL)+6)/7) AS CHAR)) ;;
+    #group_label: "Date Date"
+  #}
+
+  #dimension: month_string {
+   # type: string
+    #sql: CONCAT(CAST(${month_name_test} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(${day_test},DECIMAL)+6)/7) AS CHAR)) ;;
+    #group_label: "Date Date"
+  #}
+
+#---------------------------concatenaciones-----------------------
 
 
 
