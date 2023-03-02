@@ -45,7 +45,7 @@ view: orders {
 #testssssssssssssssssliquid
 
   dimension: priorrrrr_month_label {
-    label: "Prior Month"
+    label: "Priorrr Month"
     type: string
     sql: {% assign yr = 'now' | date: '%Y' %}
     {% assign month = 'now' | date: '%m' %}
