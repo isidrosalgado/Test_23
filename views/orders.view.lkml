@@ -44,11 +44,15 @@ view: orders {
 
 #testssssssssssssssssliquid
 
-  dimension: prior_month_date {
-    type: date
-    sql: ${TABLE}.created_at('month', DATE_ADD(CURRENT_DATE(), INTERVAL -1 MONTH));;
+  dimension: prior_month_label {
+    label: "Prior Month"
+    type: string
+    sql: {% assign yr = 'now' | date: '%Y' %}
+    {% assign month = 'now' | date: '%m' %}
+    {% assign prior_month = month | minus: 1 %}
+    {% assign prior_date = yr | append: '-' | append: prior_month | append: '-01' %}
+    "{{ prior_date | date: '%b' }} {{ yr }}";;
   }
-
 
 
 
