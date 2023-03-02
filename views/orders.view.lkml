@@ -55,6 +55,23 @@ view: orders {
   }
 
 #testssssssssssssssssAkhmerovliquid
+
+#testsssssssssssssssssssZianWang
+dimension: time_stamp{
+  sql:  ${TABLE}.created_at ;;
+
+}
+
+dimension: test_date {
+  sql: ${TABLE}.created_at ;;
+  html: {{rendered_value |date:"%s"}};;
+
+}
+#testsssssssssssssssssssZianWang
+
+
+
+
   parameter: date_start {
     type: date
     description: "Use this field to select a date to filter results by."
