@@ -46,7 +46,7 @@ view: orders {
 
   dimension: prior_month_date {
     type: date
-    sql: created_at('month', DATE_ADD(CURRENT_DATE(), INTERVAL -1 MONTH));;
+    sql: ${TABLE}.created_at('month', DATE_ADD(CURRENT_DATE(), INTERVAL -1 MONTH));;
   }
 
 
