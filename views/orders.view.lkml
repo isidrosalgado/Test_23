@@ -23,11 +23,11 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
-  dimension: week_test {
-    sql: WEEK(${TABLE}.created_at);;
-    group_label: "Date Date"
-    group_item_label: "Week Test"
-  }
+  #dimension: week_test {
+  #  sql: WEEK(${TABLE}.created_at);;
+   # group_label: "Date Date"
+    #group_item_label: "Week Test"
+  #}
   dimension: day_test {
     hidden: yes
     sql: DAY(${TABLE}.created_at);;
