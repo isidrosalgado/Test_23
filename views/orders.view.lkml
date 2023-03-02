@@ -40,12 +40,12 @@ view: orders {
     sql: CONCAT(CAST(${date_month_name} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
   }
 
-#testssssssssssssssssconcat
+#testssssssssssssssssAlankritaconcat
 
-#testssssssssssssssssliquid
+#testssssssssssssssssAkhmerovliquid
 
-  dimension: priorrrrr_month_label {
-    label: "Priorrr Month"
+  dimension: prior_month_label {
+    label: "Prior Month"
     type: string
     sql: {% assign yr = 'now' | date: '%Y' %}
     {% assign month = 'now' | date: '%m' %}
@@ -54,10 +54,7 @@ view: orders {
     "{{ prior_date | date: '%b' }} {{ yr }}";;
   }
 
-
-
-
-#testssssssssssssssssssliquid
+#testssssssssssssssssAkhmerovliquid
   parameter: date_start {
     type: date
     description: "Use this field to select a date to filter results by."
