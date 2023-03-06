@@ -156,6 +156,23 @@ dimension: test_date {
     sql: ${TABLE}.user_id ;;
   }
 
+  #test_yes_no.............................
+
+  dimension: status_yes_no {
+    label: "yes no"
+    type: yesno
+    sql:${TABLE}.status NOT IN ('pending', 'complete') ;;
+  }
+
+  measure: count_yes_no {
+    type: count_distinct
+    sql: ${status_yes_no};;
+    value_format: "$#.00;($#.00)"
+
+  }
+
+   #test_yes_no.............................
+
   measure: count {
     type: count
     html: {{ rendered_value }} | {{Orders_sum._rendered_value }} of total  ;;
