@@ -172,7 +172,7 @@ dimension: test_date {
   #}
 
   measure:count_yes_no {
-    type: number
+    type: percent_of_total
     sql: ${status_yes_no};;
     value_format: "0.000"
   }
