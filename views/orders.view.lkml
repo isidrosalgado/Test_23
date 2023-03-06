@@ -165,7 +165,7 @@ dimension: test_date {
   }
 
   measure: count_yes_no {
-    type: count_distinct
+    type: sum_distinct
     sql: ${status_yes_no};;
     value_format: "$#.00;($#.00)"
 
