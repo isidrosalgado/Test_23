@@ -164,11 +164,17 @@ dimension: test_date {
     sql:${TABLE}.status IN ('pending', 'complete') ;;
   }
 
-  measure: count_yes_no {
-    type: sum_distinct
-    sql: ${status_yes_no};;
-    value_format: "$#.00;($#.00)"
+  #measure: count_yes_no {
+   # type: sum_distinct
+    #sql: ${status_yes_no};;
+    #value_format: "$#.00;($#.00)"
 
+  #}
+
+  measure:count_yes_no {
+    type: number
+    sql: ${status_yes_no};;
+    value_format: "0.000"
   }
 
    #test_yes_no.............................
