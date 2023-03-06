@@ -161,7 +161,7 @@ dimension: test_date {
   dimension: status_yes_no {
     label: "yes no"
     type: yesno
-    sql:${TABLE}.status NOT IN ('pending', 'complete') ;;
+    sql:${TABLE}.status IN ('pending', 'complete') ;;
   }
 
   measure: count_yes_no {
