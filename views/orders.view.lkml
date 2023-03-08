@@ -42,9 +42,10 @@ view: orders {
   }
 
   dimension: test {
-    type: string
-    sql: CONCAT(LEFT(${monthAkmerov}, 3), ' ', RIGHT(${monthAkmerov}, 4), ' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
-  }
+  type: string
+  sql: CONCAT(CAST(${date_month_name} AS CHAR), ' ', CAST(YEAR(${TABLE}.created_at) AS CHAR)) ;;
+}
+
 
  # dimension: test {
   #  type: string
