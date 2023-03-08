@@ -38,7 +38,7 @@ view: orders {
   dimension: monthAkmerov {
     type: string
     sql: ${TABLE}.created_at ;;
-    value_format: "MMM YYYY"
+    value_format: "MMM"
   }
 
   dimension: test {
