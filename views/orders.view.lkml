@@ -43,7 +43,7 @@ view: orders {
 
   dimension: test {
     type: string
-    sql: CONCAT(${monthAkmerov}, ' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
+    sql: CONCAT(${monthAkmerov} ;;
   }
 
  # dimension: test {
