@@ -35,15 +35,11 @@ view: orders {
     group_item_label: "Week Test"
   }
 
-  dimension: monthAkmerov {
-    type: string
-    sql: ${TABLE}.created_at ;;
-    value_format: "MMM"
-  }
+
 
   dimension: test {
   type: string
-  sql: CONCAT(CAST(${date_month_name} AS CHAR), ' ', CAST(YEAR(${TABLE}.created_at) AS CHAR)) ;;
+  sql: CONCAT(CAST(${date_month_name} AS CHAR(3)), ' ', CAST(YEAR(${TABLE}.created_at) AS CHAR)) ;;
 }
 
 
