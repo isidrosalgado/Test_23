@@ -35,6 +35,13 @@ view: orders {
     group_item_label: "Week Test"
   }
 
+  dimension: monthAkmerov {
+    type: string
+    sql: ${TABLE}.created_at ;;
+    value_format: "MMM"
+
+  }
+
   dimension: test {
     type: string
     sql: CONCAT(CAST(${date_month_name} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
@@ -55,7 +62,13 @@ view: orders {
   }
 
 #testssssssssssssssssAkhmerovliquid
+  dimension: month {
+    type: string
+    sql: ${TABLE}.[Date] ;;
 
+    value_format: "MMM"
+
+  }
 #testsssssssssssssssssssZianWang
 dimension: time_stamp{
   sql:  ${TABLE}.created_at ;;
