@@ -38,12 +38,12 @@ view: orders {
   dimension: monthAkmerov {
     type: string
     sql: ${TABLE}.created_at ;;
-    value_format: "MMM"
+    value_format: "MMM YYYY"
   }
 
   dimension: test {
     type: string
-    sql: CONCAT(${monthAkmerov}, ' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
+    sql: CONCAT(LEFT(${monthAkmerov}, 3), ' ', RIGHT(${monthAkmerov}, 4), ' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
   }
 
  # dimension: test {
