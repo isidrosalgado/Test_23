@@ -62,7 +62,7 @@ view: orders {
     "{{ prior_date | date: '%b' }} {{ yr }}";;
   }
 
-  dimension: prior_month {
+  dimension: prior_monthh {
     type: string
     sql: {% assign prior_month = date_month | date: '%m' | minus: 1 %}
        {% assign prior_year = date_month | date: '%Y' %}
