@@ -7,21 +7,6 @@ view: orders {
 
 #testsssssssssssssssssssssconcat
 
-  dimension_group: date {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.created_at ;;
-  }
 
   dimension: week_test {
     sql: WEEK(${TABLE}.created_at);;
@@ -35,6 +20,21 @@ view: orders {
     group_item_label: "Week Test"
   }
 
+ dimension_group: date {
+   type: time
+  timeframes: [
+   raw,
+      date,
+     week,
+    month,
+    month_name,
+    quarter,
+    year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.created_at ;;
+}
 
 
   dimension: test {
@@ -61,6 +61,8 @@ view: orders {
     {% assign prior_date = yr | append: '-' | append: prior_month | append: '-01' %}
     "{{ prior_date | date: '%b' }} {{ yr }}";;
   }
+
+
 
 #testssssssssssssssssAkhmerovliquid
   dimension: month {
