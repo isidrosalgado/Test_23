@@ -24,12 +24,12 @@ view: orders {
    type: time
   timeframes: [
    raw,
-      date,
-     week,
-    month,
-    month_name,
-    quarter,
-    year
+   date,
+   week,
+   month,
+   month_name,
+   quarter,
+   year
     ]
     convert_tz: no
     datatype: date
@@ -56,22 +56,36 @@ view: orders {
     label: "Prior Month"
     type: string
     sql: {% assign yr = 'now' | date: '%Y' %}
-    {% assign month = 'now' | date: '%m' %}
-    {% assign prior_month = month | minus: 1 %}
-    {% assign prior_date = yr | append: '-' | append: prior_month | append: '-01' %}
-    "{{ prior_date | date: '%b' }} {{ yr }}";;
-  }
+{% assign month = 'now' | date: '%m' %}
 
+{% assign prior_month = month | minus:1 %}
+
+{% if prior_month == 0 %}
+  {% assign prior_month = 12 %}
+  {% assign yr = yr | minus:1 %}
+{% endif %}
+
+{% assign prior_date = yr | append: '-' | append: prior_month | append: '-01' %}
+
+{{ prior_date | date: '%b %Y' }};;
+}
+
+
+    #{% assign yr = 'now' | date: '%Y' %}
+    #{% assign month = 'now' | date: '%m' %}
+    #{% assign prior_month = month | minus: 1 %}
+    #{% assign prior_date = yr | append: '-' | append: prior_month | append: '-01' %}
+    #"{{ prior_date | date: '%b' }} {{ yr }}";;
+
+
+  dimension: test_date_format {
+    sql: '2022-01-01' ;;
+    html: {{rendered_value | date: "%b %d, %Y"}};;
+}
 
 
 #testssssssssssssssssAkhmerovliquid
-  dimension: month {
-    type: string
-    sql: ${TABLE}.[Date] ;;
 
-    value_format: "MMM"
-
-  }
 #testsssssssssssssssssssZianWang
 dimension: time_stamp{
   sql:  ${TABLE}.created_at ;;
