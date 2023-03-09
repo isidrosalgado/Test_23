@@ -55,20 +55,21 @@ view: orders {
   dimension: prior_month_label {
     label: "Prior Month"
     type: string
-    sql: {% assign yr = 'now' | date: '%Y' %}
-{% assign month = 'now' | date: '%m' %}
+    sql: `${% assign yr = 'now' | date: '%Y' %}
+        {% assign month = 'now' | date: '%m' %}
 
-{% assign prior_month = month | minus:1 %}
+      {% assign prior_month = month | minus:1 %}
 
-{% if prior_month == 0 %}
-  {% assign prior_month = 12 %}
-  {% assign yr = yr | minus:1 %}
-{% endif %}
+      {% if prior_month == 0 %}
+      {% assign prior_month = 12 %}
+      {% assign yr = yr | minus:1 %}
+      {% endif %}
 
-{% assign prior_date = yr | append: '-' | append: prior_month | append: '-01' %}
+      {% assign prior_date = yr | append: '-' | append: prior_month | append: '-01' %}
 
-{{ prior_date | date: '%b %Y' }};;
-}
+      {{ prior_date | date: '%b %Y' }}`;;
+  }
+
 
 
     #{% assign yr = 'now' | date: '%Y' %}
