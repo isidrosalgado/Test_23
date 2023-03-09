@@ -65,12 +65,12 @@ view: orders {
 }
 
 
- dimension: test_date_formattt {
+ dimension: test_date_format1 {
     sql: '2022-01-01' ;;
     html: {{rendered_value | date: "%b %d, %Y"}} ;;
   }
 
- dimension: test_date_formatttt {
+ dimension: test_date_format2 {
     sql: '2022-1-01' ;;
     html: {{rendered_value | date: "%b %d, %Y"}} ;;
   }
