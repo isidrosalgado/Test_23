@@ -15,7 +15,7 @@ persist_with: test_isidro_default_datagroup
 #<<<<<<< HEAD
 
 
-explore: lookml_dashboard_repro{}
+
 
 explore: dt_orders{}
 #=======
