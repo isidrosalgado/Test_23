@@ -1,5 +1,5 @@
 - dashboard: order_analysis
-  title: Untitled Visualization
+  title: order_analysis
   model: test_isidro
   explore: orders
   type: single_value
