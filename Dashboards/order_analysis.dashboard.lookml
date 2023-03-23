@@ -2,7 +2,7 @@
   title: order_analysis
   layout: newspaper
   preferred_viewer: dashboards-next
-  description: 'desxripcion dentro del lookml dashboard'
+  description: "desxripcion dentro del lookml dashboard"
   preferred_slug: CVtjDueuqIalesZNDYkl0C
   elements:
   - title: order_analysis
