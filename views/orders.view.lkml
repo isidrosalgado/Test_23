@@ -7,21 +7,6 @@ view: orders {
 
 #testsssssssssssssssssssssconcat
 
-  dimension_group: date {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      month_name,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.created_at ;;
-  }
 
   dimension: week_test {
     sql: WEEK(${TABLE}.created_at);;
@@ -35,10 +20,33 @@ view: orders {
     group_item_label: "Week Test"
   }
 
+ dimension_group: date {
+   type: time
+  timeframes: [
+   raw,
+   date,
+   week,
+   month,
+   month_name,
+   quarter,
+   year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}.created_at ;;
+}
+
+
   dimension: test {
-    type: string
-    sql: CONCAT(CAST(${date_month_name} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
-  }
+  type: string
+  sql: CONCAT(CAST(${date_month_name} AS CHAR(3)), ' ', CAST(YEAR(${TABLE}.created_at) AS CHAR)) ;;
+}
+
+
+ # dimension: test {
+  #  type: string
+   # sql: CONCAT(CAST(${date_month_name} AS CHAR),' || Wk- ', CAST(ROUND((CONVERT(DAY(${TABLE}.created_at),DECIMAL)+6)/7) AS CHAR)) ;;
+  #}
 
 #testssssssssssssssssAlankritaconcat
 
@@ -47,12 +55,26 @@ view: orders {
   dimension: prior_month_label {
     label: "Prior Month"
     type: string
-    sql: {% assign yr = 'now' | date: '%Y' %}
-    {% assign month = 'now' | date: '%m' %}
-    {% assign prior_month = month | minus: 1 %}
-    {% assign prior_date = yr | append: '-' | append: prior_month | append: '-01' %}
-    "{{ prior_date | date: '%b' }} {{ yr }}";;
+    sql:{% assign yr = 'now' | date: '%Y' %} {% assign month = 'now' | date: '%m' %}
+
+{% assign prior_month = 'now' | date: '%m' | minus:1 %}
+
+{% assign prior_date = yr | append: '-' | append: prior_month | append: '-01' %}
+
+{{ prior_date | date: '%b %Y' }};;
+}
+
+
+ dimension: test_date_format1 {
+    sql: '2022-01-01' ;;
+    html: {{rendered_value | date: "%b %d, %Y"}} ;;
   }
+
+ dimension: test_date_format2 {
+    sql: '2022-1-01' ;;
+    html: {{rendered_value | date: "%b %d, %Y"}} ;;
+  }
+
 
 #testssssssssssssssssAkhmerovliquid
 
@@ -159,6 +181,29 @@ dimension: test_date {
     # hidden: yes
     sql: ${TABLE}.user_id ;;
   }
+
+  #test_yes_no.............................
+
+  dimension: status_yes_no {
+    label: "yes no"
+    type: yesno
+    sql:${TABLE}.status IN ('pending', 'complete') ;;
+  }
+
+  measure: count_yes_no {
+    type: sum_distinct
+   sql: ${status_yes_no};;
+   value_format: "$#.00;($#.00)"
+
+  }
+
+  measure:count_yes_no_percent {
+    type: percent_of_total
+    sql: ${status_yes_no};;
+    value_format: "0.000"
+  }
+
+   #test_yes_no.............................
 
   measure: count {
     type: count
