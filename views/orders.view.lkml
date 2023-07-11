@@ -120,6 +120,10 @@ dimension: test_date {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    link: {
+    url: "mailto:{{ order.id._value }}"
+    icon_url:"https://www.svgrepo.com/show/336107/send-email.svg"
+  }
   }
 
 
